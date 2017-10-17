@@ -1,39 +1,42 @@
 import java.util.ArrayList;
-
 public class Pelaaja {
-
-    public String nimi;
-    public ArrayList<Object> pelaajanTavaralista = new ArrayList<Object>();
-    public Object sijainti;
-    public int sijaintiID;
-
+    private String nimi;
+    private ArrayList<Object> pelaajanTavaralista = new ArrayList<Object>();
+    private Object pelaajanSijainti;
+    private int pelaajanSijaintiID;
     public Pelaaja(String nimi) {
         this.nimi = nimi;
     }
-
     public ArrayList<Object> katsoTavarat() {
         for (Object tavara : pelaajanTavaralista) {
             System.out.println(tavara.toString());
         }
         return this.pelaajanTavaralista;
     }
-
-    public Object lisääTavaraListalle(Object tavara) {
+    public void lisääTavaraListalle(Object tavara) {
         pelaajanTavaralista.add(tavara);
-        return this.pelaajanTavaralista;
     }
-
-    public Object poistaTavaraListalta(Object tavara) {
-        pelaajanTavaralista.remove(tavara);
-        return this.pelaajanTavaralista;
+    public void poistaTavaraListalta(Object tavara) {
+        if (pelaajanTavaralista.contains(tavara)) {
+            pelaajanTavaralista.remove(tavara);
+        }
     }
-
     public Object tarkistaSijainti() {
-        System.out.println("Oletko eksyksissä? Olet huoneessa: " + sijainti);
-        return this.sijainti;
+        System.out.println("Oletko eksyksissä? Olet huoneessa: " + pelaajanSijainti);
+        return this.pelaajanSijainti;
+    }
+    public ArrayList<Object> getPelaajanTavaralista() {
+        return pelaajanTavaralista;
+    }
+    public void setPelaajanSijainti(Object sijainti) {
+        this.pelaajanSijainti = sijainti;
+    }
+    public String getNimi() {
+        return nimi;
     }
 
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
 
 }
-
-
