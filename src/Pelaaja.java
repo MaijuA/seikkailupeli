@@ -2,10 +2,11 @@ import java.util.ArrayList;
 public class Pelaaja {
     private String nimi;
     private ArrayList<Object> pelaajanTavaralista = new ArrayList<Object>();
-    private Object pelaajanSijainti;
+    private Huone pelaajanSijainti;
     private int pelaajanSijaintiID;
-    public Pelaaja(String nimi) {
+    public Pelaaja(String nimi, Huone sijainti) {
         this.nimi = nimi;
+        this.pelaajanSijainti = sijainti;
     }
     public ArrayList<Object> katsoTavarat() {
         for (Object tavara : pelaajanTavaralista) {
@@ -28,7 +29,7 @@ public class Pelaaja {
     public ArrayList<Object> getPelaajanTavaralista() {
         return pelaajanTavaralista;
     }
-    public void setPelaajanSijainti(Object sijainti) {
+    public void setPelaajanSijainti(Huone sijainti) {
         this.pelaajanSijainti = sijainti;
     }
     public String getNimi() {
@@ -39,4 +40,7 @@ public class Pelaaja {
         this.nimi = nimi;
     }
 
+    public Huone getPelaajanSijainti() {
+        return pelaajanSijainti;
+    }
 }

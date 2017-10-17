@@ -14,10 +14,12 @@ public class PelaajaTest {
     Pelaaja pelaaja;
     Tavara tavara;
     Tavara uusi;
+    Huone eteinen;
 
     @Before
     public void setUp() throws Exception {
-        pelaaja = new Pelaaja("Peikko");
+        eteinen = new Huone(1, "eteinen", "kuvaus");
+        pelaaja = new Pelaaja("Peikko", eteinen);
         tavara = new Tavara("timantti");
     }
 
