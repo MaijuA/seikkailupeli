@@ -1,96 +1,99 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 public class Huone {
-    private int id;
     private String nimi;
     private String kuvaus;
+    private String[] kartta;
     //    String tavarakuvaus;
     List<Tavara> tavaralista = new ArrayList<>();
-    public Huone(int id, String nimi, String kuvaus) {
-        this.id = id;
+
+    public Huone(String nimi, String kuvaus, String[] kartta) {
+        this.nimi = nimi;
+        this.kuvaus = kuvaus;
+        this.kartta = kartta;
+    }
+
+    public Huone(String nimi, String kuvaus) {
         this.nimi = nimi;
         this.kuvaus = kuvaus;
     }
-    public int getId() {
-        return id;
-    }
-    public String getNimi() {
+
+    public String getHuoneenNimi() {
         return nimi;
     }
-    public String getKuvaus() {
+
+    public String getHuoneenKuvaus() {
         return kuvaus;
     }
-    public Tavara getTavarakuvaus() {
-        return tavaralista.get(0);
-    }
-    public void otaTavara(String s) {
-        for (Iterator<Tavara> it = tavaralista.iterator(); it.hasNext();) {
-            Tavara t = it.next();
-            if (s.toLowerCase().equals(t.getNimi())) {
-                it.remove();
-            }
-        }
-    }
-    public String haeTavarat(){
+
+    //    public Tavara getTavarakuvaus() {
+//        return tavaralista.get(0);
+//    }
+    public String haeTavarat() {
         String tulos = "";
-        for (Tavara t:tavaralista) {
-            tulos += (t.getNimi() + "\n");
+        for (Tavara t : tavaralista) {
+            tulos += (t.getTavaranNimi() + "\n");
         }
         if (tulos == "") return "Ei ole.";
         return tulos;
     }
+
     @Override
     public String toString() {
-        return  kuvaus + "\n" + "Tavaroita huoneessa:" + "\n" + haeTavarat();
+        return kuvaus + "\n" + "Tavaroita huoneessa:" + "\n" + haeTavarat() + "\n" + haeKartta();
     }
-    public StringBuilder haeKartta(String[] nimi){
+
+    public StringBuilder haeKartta() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < nimi.length ; i++){
-            sb.append(nimi[i] + "\n");}
+        for (int i = 0; i < kartta.length; i++) {
+            sb.append(kartta[i] + "\n");
+        }
         return sb;
     }
-    String[] eteinen = {
-            "****ovi****" ,
-            "*         *" ,
-            "*    x    *" ,
-            "*         *" ,
+
+    String[] eteisenKartta = {
+            "****ovi****",
+            "*         *",
+            "*    x    *",
+            "*         *",
             "***********"
     };
-    String[] olohuone = {
-            "********ovi********" ,
-            "*                 *" ,
-            "o                 o" ,
-            "v        x        v" ,
-            "i                 i" ,
-            "*                 *" ,
+    String[] olohuoneenKartta = {
+            "********ovi********",
+            "*                 *",
+            "o                 o",
+            "v        x        v",
+            "i                 i",
+            "*                 *",
             "********ovi********"
     };
-    String[] keittiö = {
-            "****************" ,
-            "*              *" ,
-            "*              o" ,
-            "*      x       v" ,
-            "*              i" ,
-            "*              *" ,
+    String[] keittiönKartta = {
+            "****************",
+            "*              *",
+            "*              o",
+            "*      x       v",
+            "*              i",
+            "*              *",
             "****************"
     };
-    String[] makuuhuone = {
-            "*****************" ,
-            "*               *" ,
-            "*               *" ,
-            "*               *" ,
-            "*       x       *" ,
-            "*               *" ,
-            "*               *" ,
-            "*               *" ,
+    String[] makuuhuoneenKartta = {
+            "*****************",
+            "*               *",
+            "*               *",
+            "*               *",
+            "*       x       *",
+            "*               *",
+            "*               *",
+            "*               *",
             "*******ovi*******"
     };
-    String[] wc = {
-            "**********" ,
-            "o        *" ,
-            "v    x   *" ,
-            "i        *" ,
+    String[] wcnKartta = {
+            "**********",
+            "o        *",
+            "v    x   *",
+            "i        *",
             "**********"
     };
 }
