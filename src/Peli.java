@@ -2,42 +2,87 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Peli {
+    private static String[] eteisenKartta = {
+            "****ovi****",
+            "*         *",
+            "*    x    *",
+            "*         *",
+            "***********"
+    };
+    private static String[] olohuoneenKartta = {
+            "********ovi********",
+            "*                 *",
+            "o                 o",
+            "v        x        v",
+            "i                 i",
+            "*                 *",
+            "********ovi********"
+    };
+    private static String[] keittiönKartta = {
+            "****************",
+            "*              *",
+            "*              o",
+            "*      x       v",
+            "*              i",
+            "*              *",
+            "****************"
+    };
+    private static String[] makuuhuoneenKartta = {
+            "*****************",
+            "*               *",
+            "*               *",
+            "*               *",
+            "*       x       *",
+            "*               *",
+            "*               *",
+            "*               *",
+            "*******ovi*******"
+    };
+    private static String[] wcnKartta = {
+            "**********",
+            "o        *",
+            "v    x   *",
+            "i        *",
+            "**********"
+    };
+
     public static void main(String[] args) {
         // Luodaan huone-oliot ja niihin tavara-oliot
-        Huone eteinen = new Huone("eteinen", "Olet eteisessä. Eteinen on vain pieni ahdas tuulikaappi, jonka lattialla lojuu kenkiä sikin sokin. Kenkien seassa näkyy muitakin esineitä:");
-        eteinen.tavaralista.add(new Tavara("omena", "Punainen herkullinen omena", "eteinen", true, false, false));
-        eteinen.tavaralista.add(new Tavara("reppu", "Vanha nahkareppu", "eteinen", false, true, false));
-        eteinen.tavaralista.add(new Tavara("sateenvarjo", "Punainen herkullinen omena", "eteinen", false, false, false));
-        eteinen.tavaralista.add(new Tavara("vasara", "Vanha nahkareppu", "eteinen", false, false, false));
-        Huone olohuone = new Huone("olohuone", "Saavuit olohuoneeseen. Olohuoneessa on suuri punainen sohva ja vanha putkitelevisio. Huoneessa ei ole siivottu aikoihin. Sohvalla lojuu tavaroita:");
-        olohuone.tavaralista.add(new Tavara("avain", "Punainen herkullinen omena", "eteinen", false, false, false));
-        olohuone.tavaralista.add(new Tavara("kynä", "Vanha nahkareppu", "eteinen", false, false, false));
-        olohuone.tavaralista.add(new Tavara("juomapullo", "Punainen herkullinen omena", "eteinen", true, true, true));
-        olohuone.tavaralista.add(new Tavara("sukka", "Vanha nahkareppu", "eteinen", false, false, false));
-        Huone keittiö = new Huone("keittiö", "Tulit keittiöön. Keittiössä on pieni ruokailuryhmä ja suuri jääkaappi.Huoneessa on todella kylmä. Jääkaapin ovi on jäänyt auki. Jääkaapissa on pilaantunutta ruokaa sekä:");
-        keittiö.tavaralista.add(new Tavara("juusto", "Punainen herkullinen omena", "eteinen", true, false, false));
-        keittiö.tavaralista.add(new Tavara("sakset", "Vanha nahkareppu", "eteinen", false, false, false));
-        keittiö.tavaralista.add(new Tavara("avokado", "Punainen herkullinen omena", "eteinen", true, false, true));
-        keittiö.tavaralista.add(new Tavara("viilipurkki", "Vanha nahkareppu", "eteinen", true, true, false));
-        Huone makuuhuone = new Huone("makuuhuone", "Kuljit makuuhuoneeseen. Hämyisessä huoneessa on iso laverisänky vanhalla kulahtaneella patjalla. Patjassa on painaumia ja näyttää siltä, että siinä on juuri nukkuttu. Sängyn alta pilkottaa:");
-        makuuhuone.tavaralista.add(new Tavara("veitsi", "Punainen herkullinen omena", "eteinen", false, false, false));
-        makuuhuone.tavaralista.add(new Tavara("kirja", "Vanha nahkareppu", "eteinen", false, true, false));
-        makuuhuone.tavaralista.add(new Tavara("kinder-muna", "Punainen herkullinen omena", "eteinen", true, true, true));
-        makuuhuone.tavaralista.add(new Tavara("salkku", "Vanha nahkareppu", "eteinen", false, true, false));
-        Huone vessa = new Huone("vessa", "Tuliko vessahätä? Vessanpönttö on vetämättä ja haju ahtaassa vessassa on kuvottava. Lattialla lojuu:");
-        vessa.tavaralista.add(new Tavara("hiuspinni", "Punainen herkullinen omena", "eteinen", false, false, false));
-        vessa.tavaralista.add(new Tavara("saippua", "Vanha nahkareppu", "eteinen", false, false, true));
-        vessa.tavaralista.add(new Tavara("kampa", "Punainen herkullinen omena", "eteinen", false, false, false));
-        vessa.tavaralista.add(new Tavara("kurkkupastilli", "Vanha nahkareppu", "eteinen", true, false, false));
+        Huone eteinen = new Huone("eteinen", "Olet eteisessä. Eteinen on vain pieni ahdas tuulikaappi, jonka lattialla lojuu kenkiä sikin sokin. Kenkien seassa näkyy muitakin esineitä:", eteisenKartta);
+        eteinen.tavaralista.add(new Tavara("omena", "Punainen herkullinen omena, jonka voinee syödä.", "eteinen", true, false, false));
+        eteinen.tavaralista.add(new Tavara("reppu", "Vanha nahkareppu.", "eteinen", false, true, false));
+        eteinen.tavaralista.add(new Tavara("sateenvarjo", "Hieno sateenvarjo, jota ei tohdi sisällä avata.", "eteinen", false, false, false));
+        eteinen.tavaralista.add(new Tavara("vasara", "Vanha vasara, jota koodarina et tietenkään osaa käyttää.", "eteinen", false, false, false));
+        Huone olohuone = new Huone("olohuone", "Saavuit olohuoneeseen. Olohuoneessa on suuri punainen sohva ja vanha putkitelevisio. Huoneessa ei ole siivottu aikoihin. Sohvalla lojuu tavaroita:", olohuoneenKartta);
+        olohuone.tavaralista.add(new Tavara("avain", "Random avain, ei tietoa mihin lukkoon se käy.", "eteinen", false, false, false));
+        olohuone.tavaralista.add(new Tavara("kynä", "Lyijykynä. Kärki poikki. Ei voi kirjoittaa.", "eteinen", false, false, false));
+        olohuone.tavaralista.add(new Tavara("juomapullo", "Juomapullo.", "eteinen", false, true, true));
+        olohuone.tavaralista.add(new Tavara("sukka", "Vanha, hikinen sukka.", "eteinen", false, false, false));
+        Huone keittiö = new Huone("keittiö", "Tulit keittiöön. Keittiössä on pieni ruokailuryhmä ja suuri jääkaappi.Huoneessa on todella kylmä. Jääkaapin ovi on jäänyt auki. Jääkaapissa on pilaantunutta ruokaa sekä:", keittiönKartta);
+        keittiö.tavaralista.add(new Tavara("juusto", "Herkullisen hajuinen juusto. Melkein tekisi mieli maistaa.", "eteinen", true, false, false));
+        keittiö.tavaralista.add(new Tavara("sakset", "Sakset, joilla äitisi kielsi leikkimästä.", "eteinen", false, false, false));
+        keittiö.tavaralista.add(new Tavara("avokado", "Avokado. Ovat kuulema terveellisiä.", "eteinen", true, false, true));
+        keittiö.tavaralista.add(new Tavara("viilipurkki", "Viilipurkki. Herkkua.", "eteinen", true, true, false));
+        Huone makuuhuone = new Huone("makuuhuone", "Kuljit makuuhuoneeseen. Hämyisessä huoneessa on iso laverisänky vanhalla kulahtaneella patjalla. Patjassa on painaumia ja näyttää siltä, että siinä on juuri nukkuttu. Sängyn alta pilkottaa:", makuuhuoneenKartta);
+        makuuhuone.tavaralista.add(new Tavara("veitsi", "Ruosteinen voiveitsi.", "eteinen", false, false, false));
+        makuuhuone.tavaralista.add(new Tavara("kirja", "Paksu opus. Kannessa ei ole mitään tekstiä.", "eteinen", false, true, false));
+        makuuhuone.tavaralista.add(new Tavara("suklaapatukka", "Nam! Suklaapatukka. Parasta ennen päiväys näyttää kyllä menneen umpeen, mutta kai tämän voisi syödä.", "eteinen", true, false, true));
+        makuuhuone.tavaralista.add(new Tavara("salkku", "Vanha nahkainen salkku... voisikohan tämän avata?", "eteinen", false, true, false));
+        Huone vessa = new Huone("vessa", "Tuliko vessahätä? Vessanpönttö on vetämättä ja haju ahtaassa vessassa on kuvottava. Lattialla lojuu:", wcnKartta);
+        vessa.tavaralista.add(new Tavara("hiuspinni", "Hiuspinnillä hiukset pysyvät pois silmiltä, mutta tämä pinni näyttäisi olevan rikki.", "eteinen", false, false, false));
+        vessa.tavaralista.add(new Tavara("saippua", "Vanha kuivunut palasaippua.", "eteinen", false, false, true));
+        vessa.tavaralista.add(new Tavara("kampa", "Tällä harvalla kammalla ei enää juurikaan hiuksia kammata." , "eteinen", false, false, false));
+        vessa.tavaralista.add(new Tavara("kurkkupastilli", "Onko kurkku kipeä? Tämän syömällä ainakin henki raikastuu." , "eteinen", true, false, false));
 
         // Luodaan pelaaja
         Scanner lukija = new Scanner(System.in);
         System.out.println("Tervetuloa seikkailutaloon!\nMikä on nimesi? ");
         String nimi = lukija.nextLine();
         Pelaaja pelaaja = new Pelaaja(nimi, eteinen);
-        System.out.println("Moi " + nimi + "! Tavoitteesi on etsiä talosta viisi timanttia ja löytää tie ulos.\n" +
-                "Voit liikkua talossa huoneesta huoneeseen komennoilla 'katso ympärillesi', 'eteen', 'taakse', 'oikealle' 'vasemmalle'.\n" +
-                "Muut komennot sinun tulee keksiä itse. Onnea matkaan " + nimi + "!");
+        System.out.println("Moi " + nimi + "!\nTavoitteesi on etsiä talosta viisi timanttia ja löytää tie ulos.\n" +
+                "Voit liikkua talossa huoneesta huoneeseen komennoilla 'eteen', 'taakse', 'oikea' 'vasen'.\n" +
+                "Voit myös katsoa karttaa, tarkista tavaralistaa, syödä sekä avata löytämiäsi asioita. Vain mielikuvituksesi on rajana" +
+                " Onnea matkaan " + nimi + "!");
 
         // Luodaan peli
         Peli peli = new Peli();
@@ -47,41 +92,41 @@ public class Peli {
 
     // pelaa
     private void pelaa(Pelaaja pelaaja, Huone eteinen, Huone olohuone, Huone makuuhuone, Huone keittiö, Huone vessa) {
-        // if (pelaaja.getTimantit() == 3) {
-        //     System.out.println("Pääsit läpi!");
-        // }
+        if (pelaaja.getTimanttilaskuri() == 3) {
+            System.out.println("Pääsit läpi!");
+        }
         Scanner lukijaPeli = new Scanner(System.in);
         String syöte = lukijaPeli.nextLine();
 
-        // hae huoneen kuvaus
+        // katso pelaajan tavarat
         if (syöte.contains("katso")) {
             //System.out.println(eteinen.getKuvaus());
-            Huone huone = pelaaja.getPelaajanSijainti();
-            System.out.println(huone.getHuoneenKuvaus());
-            // tulosta tavaralista
-            // tulosta kartta
+            System.out.println(pelaaja.katsoTavarat());
             pelaa(pelaaja, eteinen, olohuone, makuuhuone, keittiö, vessa);
         }
 
         // ota tavara huoneesta pelaajalle
         else if (syöte.contains("ota")) {
-            //pelaaja.otaTavara(syöte);
+            pelaaja.otaTavara(syöte);
             pelaa(pelaaja, eteinen, olohuone, makuuhuone, keittiö, vessa);
         }
 
         // syö tavara
         else if (syöte.contains("syö")) {
-//pelaaja.syö(syöte);
+            pelaaja.syö(syöte);
+            pelaa(pelaaja, eteinen, olohuone, makuuhuone, keittiö, vessa);
         }
 
         // avaa tavara
         else if (syöte.contains("avaa")) {
-// pelaaja.avaa(syöte);
+            pelaaja.avaa(syöte);
+            pelaa(pelaaja, eteinen, olohuone, makuuhuone, keittiö, vessa);
         }
 
         // tutki tavara
         else if (syöte.contains("tutki")) {
             pelaaja.tutki(syöte);
+            pelaa(pelaaja, eteinen, olohuone, makuuhuone, keittiö, vessa);
         }
 
         // liikkuminen huoneesta toiseen
@@ -89,7 +134,7 @@ public class Peli {
         else if (pelaaja.getPelaajanSijainti().equals(eteinen)) {
             if (syöte.contains("eteen")) {
                 pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone.getHuoneenKuvaus());
+                System.out.println(olohuone);
             } else if (syöte.contains("taakse") || syöte.contains("oikea") || syöte.contains("vase")) {
                 System.out.println("Seinä tuli vastaan!");
             } else {
@@ -101,16 +146,16 @@ public class Peli {
         else if (pelaaja.getPelaajanSijainti().equals(olohuone)) {
             if (syöte.contains("eteen")) {
                 pelaaja.setPelaajanSijainti(makuuhuone);
-                System.out.println(makuuhuone.getHuoneenKuvaus());
+                System.out.println(makuuhuone);
             } else if (syöte.contains("oikea")) {
                 pelaaja.setPelaajanSijainti(vessa);
                 System.out.println(vessa.getHuoneenKuvaus());
             } else if (syöte.contains("vase")) {
                 pelaaja.setPelaajanSijainti(keittiö);
-                System.out.println(keittiö.getHuoneenKuvaus());
+                System.out.println(keittiö);
             } else if (syöte.contains("taakse")) {
                 pelaaja.setPelaajanSijainti(eteinen);
-                System.out.println(eteinen.getHuoneenKuvaus());
+                System.out.println(eteinen);
             } else {
                 System.out.println("En ymmärrä!");
             }
@@ -123,7 +168,7 @@ public class Peli {
             }
             if (syöte.contains("taakse")) {
                 pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone.getHuoneenKuvaus());
+                System.out.println(olohuone);
             }
             pelaa(pelaaja, eteinen, olohuone, makuuhuone, keittiö, vessa);
         }
@@ -134,7 +179,7 @@ public class Peli {
             }
             if (syöte.contains("vase")) {
                 pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone.getHuoneenKuvaus());
+                System.out.println(olohuone);
 
             }
             pelaa(pelaaja, eteinen, olohuone, makuuhuone, keittiö, vessa);
@@ -146,7 +191,7 @@ public class Peli {
             }
             if (syöte.contains("oikea")) {
                 pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone.getHuoneenKuvaus());
+                System.out.println(olohuone);
             } else {
                 System.out.println("Olet eksyksissä!");
             }
