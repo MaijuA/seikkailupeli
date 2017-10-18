@@ -42,7 +42,7 @@ public class Huone {
 
     @Override
     public String toString() {
-        return kuvaus + "\n" + "Tavaroita huoneessa:" + "\n" + haeTavarat() + "\n" + haeKartta();
+        return kuvaus + "\n" + haeTavarat() + "\n" + haeKartta();
     }
 
     public StringBuilder haeKartta() {
