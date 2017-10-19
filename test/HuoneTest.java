@@ -22,7 +22,7 @@ public class HuoneTest {
 
     @Test
     public void testaaHaeTavarat() throws Exception {
-        assertEquals("Ei ole.", eteinen.haeTavarat());
+        assertEquals("Ei mitään.", eteinen.haeTavarat());
         eteinen.tavaralista.add(tavara);
         assertEquals("juusto\n", eteinen.haeTavarat());
     }

@@ -15,25 +15,16 @@ public class PelaajaTest {
         eteinen = new Huone("eteinen", "kuvaus");
         pelaaja = new Pelaaja("Peikko", eteinen);
         tavara = new Tavara("juusto", "Punainen herkullinen omena", "eteinen", true, false, false, false);
-
+        eteinen.tavaralista.add(tavara);
     }
 
     @Test
     public void testaaTavaranLisäys() throws Exception {
-        pelaaja.otaTavara("tavara");
+        pelaaja.otaTavara("juusto");
         int listanKoko = pelaaja.getPelaajanTavaralista().size();
         assertEquals("Tavaroiden määrä: ", 1, listanKoko);
     }
 
-    @Test
-    public void testaaTavaranPoisto() throws Exception {
-        Tavara uusi = new Tavara("sakset", "Vanha nahkareppu", "eteinen", false, false, false,false);
-        pelaaja.otaTavara("uusi");
-        pelaaja.otaTavara("tavara");
-        pelaaja.poistaTavaraListalta(tavara);
-        int listanKoko = pelaaja.getPelaajanTavaralista().size();
-        assertEquals("Tavaroiden määrä: ", 1, listanKoko);
-    }
 
     @Test
     public void testaaTutki() throws Exception {
@@ -51,7 +42,7 @@ public class PelaajaTest {
 
     @Test
     public void testaaTavaranOttaminen() throws Exception {
-        pelaaja.otaTavara("timanttii");
+        pelaaja.otaTavara("juusto");
         int pelaajanTavaralistanKoko = pelaaja.getPelaajanTavaralista().size();
         assertEquals("Pelaajan tavaramäärä", 1, pelaajanTavaralistanKoko);
         int huoneenTavaralistanKoko = eteinen.tavaralista.size();
