@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Pelaaja {
@@ -40,7 +39,7 @@ public class Pelaaja {
     }
 
     public void tarkistaSijainti() {
-        System.out.println("Eksyitkö? " + pelaajanSijainti);
+        System.out.println("Eksyitkö? " + getPelaajanSijainti());
     }
 
     public void setPelaajanSijainti(Huone sijainti) {
@@ -50,6 +49,7 @@ public class Pelaaja {
     public Huone getPelaajanSijainti() {
         return pelaajanSijainti;
     }
+
 
     public void syö(String syöte) {
         Tavara tavara = null;
@@ -132,7 +132,6 @@ public class Pelaaja {
             }
         }
     }
-
     public void tutki(String syöte) {
         int eiole = 0;
         for (int i = 0; i < pelaajanTavaralista.size(); i++) {
@@ -150,8 +149,8 @@ public class Pelaaja {
 
 
     public void pyydäKomennot() {
-        System.out.println("Navigointi:\n\t- eteen\n\t- taakse\n\t- oikea\n\t- vasen\nMuut toiminnot:" +
-                "\n\t- ota 'tavara'\n\t- tutki 'tavara'\n\t- syö 'tavara'\n\t- avaa 'tavara'\n\t- kartta\n\t" +
+        System.out.println("Navigointi:\n\t- eteen\n\t- taakse\n\t- oikea\n\t- vasen\n\t- kartta\n\t- missä\nMuut toiminnot:" +
+                "\n\t- ota 'tavara'\n\t- tutki 'tavara'\n\t- syö 'tavara'\n\t- avaa 'tavara'\n\t" +
                 "- huoneen tavarat\n\t- omat tavarat\n\t- nuku\n\t- lopeta");
     }
 

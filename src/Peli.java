@@ -73,7 +73,7 @@ public class Peli {
         olohuone.tavaralista.add(new Tavara("juomapullo", "Juomapullo. Onkohan siellä jotain?", "eteinen", false, true, true, false));
         olohuone.tavaralista.add(new Tavara("sukka", "Vanha, hikinen sukka.", "eteinen", false, false, false, false));
 
-        keittiö = new Huone("keittiö", "Tulit keittiöön. Keittiössä on pieni ruokailuryhmä ja suuri jääkaappi.Huoneessa on todella kylmä. Jääkaapin ovi on jäänyt auki. \nJääkaapissa on pilaantunutta ruokaa sekä:", keittiönKartta);
+        keittiö = new Huone("keittiö", "Tulit keittiöön. Keittiössä on pieni ruokailuryhmä ja suuri jääkaappi. Huoneessa on todella kylmä. Jääkaapin ovi on jäänyt auki. \nJääkaapissa on pilaantunutta ruokaa sekä:", keittiönKartta);
         keittiö.tavaralista.add(new Tavara("juusto", "Herkullisen hajuinen juusto. Melkein tekisi mieli maistaa.", "eteinen", true, false, false, false));
         keittiö.tavaralista.add(new Tavara("sakset", "Sakset, joilla äitisi kielsi leikkimästä.", "eteinen", false, false, false, true));
         keittiö.tavaralista.add(new Tavara("avokado", "Avokado. Ovat kuulema terveellisiä.", "eteinen", true, false, true, false));
@@ -129,7 +129,7 @@ public class Peli {
                 pelaa();
             }
 
-            // lopeta
+            // lopeta peli
             else if (syöte.toLowerCase().contains("lopeta")) {
                 System.out.println("Lopetit pelin.");
             }
@@ -162,7 +162,7 @@ public class Peli {
                 System.out.println(pelaaja.getPelaajanSijainti().haeKartta());
                 pelaa();
             }
-            //listaa omat tavarat
+            // listaa omat tavarat
             else if (syöte.toLowerCase().contains("omat tavar")) {
                 System.out.println(pelaaja.katsoTavarat());
                 pelaa();
@@ -199,6 +199,12 @@ public class Peli {
             // taakse
             else if (syöte.toLowerCase().contains("taakse")) {
                 pelaaja.taakse(eteinen, olohuone, makuuhuone, keittiö, vessa);
+                pelaa();
+            }
+
+            // sijainnin kysyminen
+            else if (syöte.toLowerCase().contains("missä")) {
+                pelaaja.tarkistaSijainti();
                 pelaa();
             }
 

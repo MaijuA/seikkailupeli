@@ -23,6 +23,7 @@ public class Tavara {
     public String getTavaranSijainti() {
         return tavaranSijainti;
     }
+
     @Override
     public String toString() {
         return tavaranNimi;

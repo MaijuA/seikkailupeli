@@ -1,12 +1,10 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Huone {
     private String nimi;
     private String kuvaus;
     private String[] kartta;
-    //    String tavarakuvaus;
     List<Tavara> tavaralista = new ArrayList<>();
 
     public Huone(String nimi, String kuvaus, String[] kartta) {
@@ -28,9 +26,6 @@ public class Huone {
         return kuvaus;
     }
 
-    //    public Tavara getTavarakuvaus() {
-//        return tavaralista.get(0);
-//    }
     public String haeTavarat() {
         String tulos = "";
         for (Tavara t : tavaralista) {
