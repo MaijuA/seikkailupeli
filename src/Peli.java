@@ -183,72 +183,31 @@ public class Peli {
         }
 
         // liikkuminen huoneesta toiseen
-        // Jos pelaaja eteisessä
-        else if (pelaaja.getPelaajanSijainti().equals(eteinen)) {
-            if (syöte.toLowerCase().contains("eteen")) {
-                pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone);
-            } else if (syöte.toLowerCase().contains("taakse") || syöte.toLowerCase().contains("oikea") || syöte.toLowerCase().contains("vase")) {
-                System.out.println("Seinä tuli vastaan!");
-            } else {
-                System.out.println("En ymmärrä!");
-            }
+        // vasemmalle
+        else if (syöte.toLowerCase().contains("vase")) {
+            pelaaja.vasemmalle(eteinen, olohuone, makuuhuone, keittiö, vessa);
             pelaa();
         }
-        // Jos pelaaja olohuoneessa
-        else if (pelaaja.getPelaajanSijainti().equals(olohuone)) {
-            if (syöte.toLowerCase().contains("eteen")) {
-                pelaaja.setPelaajanSijainti(makuuhuone);
-                System.out.println(makuuhuone);
-            } else if (syöte.toLowerCase().contains("oikea")) {
-                pelaaja.setPelaajanSijainti(vessa);
-                System.out.println(vessa);
-            } else if (syöte.toLowerCase().contains("vase")) {
-                pelaaja.setPelaajanSijainti(keittiö);
-                System.out.println(keittiö);
-            } else if (syöte.toLowerCase().contains("taakse")) {
-                pelaaja.setPelaajanSijainti(eteinen);
-                System.out.println(eteinen);
-            } else {
-                System.out.println("En ymmärrä!");
-            }
+        // oikealle
+        else if (syöte.toLowerCase().contains("oikea")) {
+            pelaaja.oikealle(eteinen, olohuone, makuuhuone, keittiö, vessa);
             pelaa();
         }
-        // Jos pelaaja makuuhuoneessa
-        else if (pelaaja.getPelaajanSijainti().equals(makuuhuone)) {
-            if (syöte.toLowerCase().contains("eteen") || syöte.toLowerCase().contains("oikea") || syöte.toLowerCase().contains("vase")) {
-                System.out.println("Törmäsit seinään!");
-            }
-            if (syöte.toLowerCase().contains("taakse")) {
-                pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone);
-            }
+        // eteen
+        else if (syöte.toLowerCase().contains("eteen")) {
+            pelaaja.eteen(eteinen, olohuone, makuuhuone, keittiö, vessa);
             pelaa();
         }
-        // Jos pelaaja vessassa
-        else if (pelaaja.getPelaajanSijainti().equals(vessa)) {
-            if (syöte.toLowerCase().contains("eteen") || syöte.toLowerCase().contains("oikea") || syöte.toLowerCase().contains("taakse")) {
-                System.out.println("Törmäsit seinään!");
-            }
-            if (syöte.toLowerCase().contains("vase")) {
-                pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone);
+        // taakse
+        else if (syöte.contains("taakse")) {
+            pelaaja.taakse(eteinen, olohuone, makuuhuone, keittiö, vessa);
+            pelaa();
+        }
 
-            }
+        // syöte jotain ihan muuta
+        else {
+            System.out.println("En ymmärrä!");
             pelaa();
-        }
-        // Jos pelaaja keittiössä
-        else if (pelaaja.getPelaajanSijainti().equals(keittiö)) {
-            if (syöte.toLowerCase().contains("eteen") || syöte.toLowerCase().contains("vase") || syöte.toLowerCase().contains("taakse")) {
-                System.out.println("Törmäsit seinään!");
-            }
-            if (syöte.toLowerCase().contains("oikea")) {
-                pelaaja.setPelaajanSijainti(olohuone);
-                System.out.println(olohuone);
-            }
-            pelaa();
-        } else {
-            System.out.println("Olet eksyksissä!");
         }
     }
 }
