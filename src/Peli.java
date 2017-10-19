@@ -95,10 +95,16 @@ public class Peli {
         String nimi = lukija.nextLine();
         pelaaja = new Pelaaja(nimi, eteinen);
         System.out.println("Moi " + nimi + "!\nTavoitteesi on etsiä talosta kolme timanttia ja löytää tie ulos.\n" +
-                "Voit liikkua talossa huoneesta huoneeseen komennoilla 'eteen', 'taakse', 'oikea' 'vasen'.\n" +
-                "Voit myös katsoa karttaa, tarkista tavaralistaa, syödä sekä avata löytämiäsi asioita. Vain mielikuvituksesi on rajana" +
+                "Voit liikkua talossa huoneesta huoneeseen komennoilla 'eteen', 'taakse', 'oikea', 'vasen'.\n" +
+                "Muut komennot voit katsoa kirjoittamalla 'komennot' jos et itse niitä keksi.\n\n" +
+                "Aloita peli komennolla 'aloita'.\n" +
                 " Onnea matkaan " + nimi + "!");
+        String seuraava = lukija.nextLine();
+        while (!(seuraava.contains("aloita"))){
+            seuraava = lukija.nextLine();
+        }
         pelaaja.setPelaajanSijainti(eteinen);
+        System.out.println(eteinen);
     }
 
     // pelaa
@@ -108,14 +114,15 @@ public class Peli {
             System.out.println("******* JEEE!! *******");
             System.out.println("LÖYSIT KOLME TIMANTTIA");
             System.out.println("**** PÄÄSIT LÄPI!! ****");
-            System.out.println("******* ONNEA!! *******");
+            System.out.println("******* ONNEA" + pelaaja.getNimi()+ "!!*******");
         }
         Scanner lukijaPeli = new Scanner(System.in);
         String syöte = lukijaPeli.nextLine();
 
-        // katso pelaajan tavarat
-        if (syöte.contains("katso")) {
-            System.out.println(pelaaja.katsoTavarat());
+
+        // katso komennot
+        if (syöte.contains("komennot")) {
+            pelaaja.pyydäKomennot();
             pelaa();
         }
 
@@ -140,6 +147,21 @@ public class Peli {
         // tutki tavara
         else if (syöte.contains("tutki")) {
             pelaaja.tutki(syöte);
+            pelaa();
+        }
+        // katso kartta
+        else if (syöte.contains("kartta")){
+            System.out.println(pelaaja.getPelaajanSijainti().haeKartta());
+            pelaa();
+        }
+        //listaa omat tavarat
+        else if (syöte.contains("omat tavar")){
+            System.out.println(pelaaja.katsoTavarat());
+            pelaa();
+        }
+        //listaa huoneen tavarat
+        else if (syöte.contains("huoneen tavar")){
+            System.out.println("Huoneessa on:\n" + pelaaja.getPelaajanSijainti().haeTavarat());
             pelaa();
         }
 

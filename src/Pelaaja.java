@@ -13,6 +13,10 @@ public class Pelaaja {
         this.pelaajanSijainti = sijainti;
     }
 
+    public String getNimi() {
+        return nimi;
+    }
+
     public String katsoTavarat() {
         String lista = "";
         for (Tavara tavara : pelaajanTavaralista) {
@@ -89,10 +93,10 @@ public class Pelaaja {
             Tavara t = it.next();
             if (syöte.contains(t.getTavaranNimi())) {
                 pelaajanTavaralista.add(t);
+                System.out.println(t.ominaisuudet);
                 it.remove();
             }
         }
-        System.out.println(katsoTavarat());
     }
 
     public void tutki(String syöte) {
@@ -106,6 +110,12 @@ public class Pelaaja {
                 }
             }
         }
+    }
+
+    public void pyydäKomennot() {
+        System.out.println("Navigointi:\n\t- eteen\n\t- taakse\n\t- oikea\n\t- vasen\nMuut toiminnot:" +
+                "\n\t- ota 'tavara'\n\t- tutki 'tavara'\n\t- syö 'tavara'\n\t- avaa 'tavara'\n\t- kartta\n\t" +
+                "- huoneen tavarat\n\t- omat tavarat\n\t ");
     }
 
     public int getTimanttilaskuri() {
