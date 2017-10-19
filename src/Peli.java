@@ -1,6 +1,4 @@
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Peli {
@@ -104,7 +102,8 @@ public class Peli {
                 "Aloita peli komennolla 'aloita'.\n" +
                 " Onnea matkaan " + nimi + "!");
         String seuraava = lukija.nextLine();
-        while (!(seuraava.toLowerCase().contains("alo"))){
+        while (!(seuraava.toLowerCase().contains("alo"))) {
+            System.out.println("'Aloita' aloittaa pelin");
             seuraava = lukija.nextLine();
         }
         pelaaja.setPelaajanSijainti(eteinen);
@@ -118,7 +117,7 @@ public class Peli {
             System.out.println("******* JEEE!! *******");
             System.out.println("LÖYSIT KOLME TIMANTTIA");
             System.out.println("**** PÄÄSIT LÄPI!! ***");
-            System.out.println("\n*ONNEA " + pelaaja.getNimi()+ "!!*");
+            System.out.println("\n*ONNEA " + pelaaja.getNimi() + "!!*");
         }
 
         Scanner lukijaPeli = new Scanner(System.in);
@@ -128,9 +127,7 @@ public class Peli {
         if (syöte.toLowerCase().contains("komennot")) {
             pelaaja.pyydäKomennot();
             pelaa();
-        }
-
-        else if (syöte.toLowerCase().contains("lopeta")){
+        } else if (syöte.toLowerCase().contains("lopeta")) {
             System.out.println("Lopetit pelin.");
         }
 
@@ -158,23 +155,21 @@ public class Peli {
             pelaa();
         }
         // katso kartta
-        else if (syöte.toLowerCase().contains("kartta")){
+        else if (syöte.toLowerCase().contains("kartta")) {
             System.out.println(pelaaja.getPelaajanSijainti().haeKartta());
             pelaa();
         }
         //listaa omat tavarat
-        else if (syöte.toLowerCase().contains("omat tavar")){
+        else if (syöte.toLowerCase().contains("omat tavar")) {
             System.out.println(pelaaja.katsoTavarat());
             pelaa();
         }
         //listaa huoneen tavarat
-        else if (syöte.toLowerCase().contains("huoneen tavar")){
+        else if (syöte.toLowerCase().contains("huoneen tavar")) {
             System.out.println("Huoneessa on:\n" + pelaaja.getPelaajanSijainti().haeTavarat());
             pelaa();
-        }
-
-        else if (syöte.toLowerCase().contains("nuku")){
-            if (pelaaja.getPelaajanSijainti().equals(makuuhuone)){
+        } else if (syöte.toLowerCase().contains("nuku")) {
+            if (pelaaja.getPelaajanSijainti().equals(makuuhuone)) {
                 System.out.println("Zzzzz.....Zzzzz........\nOlipa makoisat nokoset!");
             } else {
                 System.out.println("Ei lattialla viitti..");

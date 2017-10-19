@@ -38,7 +38,7 @@ public class PelaajaTest {
     public void testaaTutki() throws Exception {
         eteinen.tavaralista.add(tavara);
         pelaaja.otaTavara("juusto");
-        assertEquals("Tuleeko ominaisuusteksti", "Punainen herkullinen omena", tavara.ominaisuudet );
+        assertEquals("Tuleeko ominaisuusteksti", "Punainen herkullinen omena", tavara.ominaisuudet);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class PelaajaTest {
         int pelaajanTavaralistanKoko = pelaaja.getPelaajanTavaralista().size();
         assertEquals("Pelaajan tavaramäärä", 1, pelaajanTavaralistanKoko);
         int huoneenTavaralistanKoko = eteinen.tavaralista.size();
-        assertEquals("Huoneen tavaramäärä", 0, huoneenTavaralistanKoko );
+        assertEquals("Huoneen tavaramäärä", 0, huoneenTavaralistanKoko);
     }
 
     @Test
@@ -85,6 +85,25 @@ public class PelaajaTest {
         assertEquals(olohuone, pelaaja.getPelaajanSijainti());
     }
 
+    @Test
+    public void testaaSyö() throws Exception {
+        pelaaja.otaTavara("juusto");
+        pelaaja.syö("juusto");
+        int pelaajanTavaranlistanKoko = pelaaja.getPelaajanTavaralista().size();
+        assertEquals("Pelaajan tavaramäärä", 0, pelaajanTavaranlistanKoko);
+        tavara = new Tavara("laukku", "Pikkulaukku", "eteinen", false, false, false, false);
+        eteinen.tavaralista.add(tavara);
+        pelaaja.otaTavara("laukku");
+        pelaaja.syö("laukku");
+        pelaajanTavaranlistanKoko = pelaaja.getPelaajanTavaralista().size();
+        assertEquals("Pelaajan tavaramäärä", 1, pelaajanTavaranlistanKoko);
+        tavara = new Tavara("pihvi", "Mehukas pihvi", "eteinen", true, false, true, false);
+        eteinen.tavaralista.add(tavara);
+        pelaaja.otaTavara("pihvi");
+        pelaaja.syö("pihvi");
+        int timantit = pelaaja.getTimanttilaskuri();
+        assertEquals("Timanttien määrä", 1, timantit);
+    }
 
 
 }
