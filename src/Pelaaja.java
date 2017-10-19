@@ -160,7 +160,7 @@ public class Pelaaja {
 
     public void vasemmalle(Huone eteinen, Huone olohuone, Huone makuuhuone, Huone keittiö, Huone vessa) {
         if (pelaajanSijainti.equals(eteinen) || pelaajanSijainti.equals(keittiö) || pelaajanSijainti.equals(makuuhuone)) {
-            System.out.println("Törmäsit seinään!");
+            System.out.println("Törmäsit seinään! (Kartasta voisi olla apua)");
         } else if (pelaajanSijainti.equals(olohuone)) {
             setPelaajanSijainti(keittiö);
             System.out.println(keittiö);
@@ -172,7 +172,7 @@ public class Pelaaja {
 
     public void oikealle(Huone eteinen, Huone olohuone, Huone makuuhuone, Huone keittiö, Huone vessa) {
         if (pelaajanSijainti.equals(eteinen) || pelaajanSijainti.equals(vessa) || pelaajanSijainti.equals(makuuhuone)) {
-            System.out.println("Törmäsit seinään!");
+            System.out.println("Törmäsit seinään! (Kartasta voisi olla apua)");
         } else if (pelaajanSijainti.equals(olohuone)) {
             setPelaajanSijainti(vessa);
             System.out.println(vessa);
@@ -184,7 +184,7 @@ public class Pelaaja {
 
     public void eteen(Huone eteinen, Huone olohuone, Huone makuuhuone, Huone keittiö, Huone vessa) {
         if (pelaajanSijainti.equals(keittiö) || pelaajanSijainti.equals(makuuhuone) || pelaajanSijainti.equals(vessa)) {
-            System.out.println("Törmäsit seinään!");
+            System.out.println("Törmäsit seinään! (Kartasta voisi olla apua)");
         } else if (pelaajanSijainti.equals(olohuone)) {
             setPelaajanSijainti(makuuhuone);
             System.out.println(makuuhuone);
@@ -196,7 +196,7 @@ public class Pelaaja {
 
     public void taakse(Huone eteinen, Huone olohuone, Huone makuuhuone, Huone keittiö, Huone vessa) {
         if (pelaajanSijainti.equals(keittiö) || pelaajanSijainti.equals(eteinen) || pelaajanSijainti.equals(vessa)) {
-            System.out.println("Törmäsit seinään!");
+            System.out.println("Törmäsit seinään! (Kartasta voisi olla apua)");
         } else if (pelaajanSijainti.equals(olohuone)) {
             setPelaajanSijainti(eteinen);
             System.out.println(eteinen);
