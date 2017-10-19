@@ -1,11 +1,5 @@
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
@@ -20,7 +14,8 @@ public class PelaajaTest {
     public void setUp() throws Exception {
         eteinen = new Huone("eteinen", "kuvaus");
         pelaaja = new Pelaaja("Peikko", eteinen);
-        tavara = new Tavara("juusto", "Punainen herkullinen omena", "eteinen", true, false, false);
+        tavara = new Tavara("juusto", "Punainen herkullinen omena", "eteinen", true, false, false, false);
+
     }
 
     @Test
@@ -32,12 +27,19 @@ public class PelaajaTest {
 
     @Test
     public void testaaTavaranPoisto() throws Exception {
-        Tavara uusi = new Tavara("sakset", "Vanha nahkareppu", "eteinen", false, false, false);
+        Tavara uusi = new Tavara("sakset", "Vanha nahkareppu", "eteinen", false, false, false,false);
         pelaaja.otaTavara("uusi");
         pelaaja.otaTavara("tavara");
         pelaaja.poistaTavaraListalta(tavara);
         int listanKoko = pelaaja.getPelaajanTavaralista().size();
         assertEquals("Tavaroiden määrä: ", 1, listanKoko);
+    }
+
+    @Test
+    public void testaaTutki() throws Exception {
+        eteinen.tavaralista.add(tavara);
+        pelaaja.otaTavara("juusto");
+        assertEquals("Tuleeko ominaisuusteksti", "Punainen herkullinen omena", tavara.ominaisuudet );
     }
 
     @Test

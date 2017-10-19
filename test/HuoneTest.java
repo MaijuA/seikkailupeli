@@ -16,8 +16,8 @@ public class HuoneTest {
     public void setUp() throws Exception {
         eteinen = new Huone("eteinen", "kuvaus");
         pelaaja = new Pelaaja("Peikko", eteinen);
-        tavara = new Tavara("juusto", "Punainen herkullinen omena", "eteinen", true, false, false);
-        uusi = new Tavara("sakset", "Vanha nahkareppu", "eteinen", false, false, false);
+        tavara = new Tavara("juusto", "Punainen herkullinen omena", "eteinen", true, false, false, false);
+        uusi = new Tavara("sakset", "Vanha nahkareppu", "eteinen", false, false, false, false);
     }
 
     @Test

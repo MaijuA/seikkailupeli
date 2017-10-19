@@ -36,7 +36,7 @@ public class Huone {
         for (Tavara t : tavaralista) {
             tulos += (t.getTavaranNimi() + "\n");
         }
-        if (tulos == "") return "Ei ole.";
+        if (tulos == "") return "Ei mitään.";
         return tulos;
     }
 
