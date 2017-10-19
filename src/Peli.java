@@ -199,7 +199,7 @@ public class Peli {
             pelaa();
         }
         // taakse
-        else if (syöte.contains("taakse")) {
+        else if (syöte.toLowerCase().contains("taakse")) {
             pelaaja.taakse(eteinen, olohuone, makuuhuone, keittiö, vessa);
             pelaa();
         }
