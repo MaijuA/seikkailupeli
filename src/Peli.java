@@ -48,12 +48,12 @@ public class Peli {
             "**********"
     };
 
-    Huone eteinen;
-    Huone olohuone;
-    Huone keittiö;
-    Huone vessa;
-    Huone makuuhuone;
-    Pelaaja pelaaja;
+    private Huone eteinen;
+    private Huone olohuone;
+    private Huone keittiö;
+    private Huone vessa;
+    private Huone makuuhuone;
+    private Pelaaja pelaaja;
 
     public static void main(String[] args) {
         Peli peli = new Peli();
@@ -61,7 +61,7 @@ public class Peli {
         peli.pelaa();
     }
 
-    public void alustaPeli() {
+    private void alustaPeli() {
         // Luodaan huone-oliot ja niihin tavara-oliot
         eteinen = new Huone("eteinen", "Olet eteisessä. Eteinen on vain pieni ahdas tuulikaappi, jonka lattialla lojuu kenkiä sikin sokin. Kenkien seassa näkyy muitakin esineitä:", eteisenKartta);
         eteinen.tavaralista.add(new Tavara("omena", "Punainen herkullinen omena, jonka voinee syödä.", "eteinen", true, false, false));
