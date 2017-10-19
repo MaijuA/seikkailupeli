@@ -117,14 +117,16 @@ public class Peli {
 
     // pelaa
     private void pelaa() {
+        // jos pääset läpi
         if (pelaaja.getTimanttilaskuri() == 3) {
             System.out.println("");
-            System.out.println("********* JEEE!! *********");
-            System.out.println("* LÖYSIT KOLME TIMANTTIA *");
-            System.out.println("***    PÄÄSIT LÄPI!!   ***");
-            System.out.println("\n** ONNEA " + pelaaja.getNimi() + "!! **");
-        } else {
-
+            System.out.println("******* JEEE!! *******");
+            System.out.println("LÖYSIT KOLME TIMANTTIA");
+            System.out.println("**** PÄÄSIT LÄPI!! ***");
+            System.out.println("\n*ONNEA " + pelaaja.getNimi() + "!!*");
+        }
+        // muuten jatka pelaamista
+        else {
             Scanner lukijaPeli = new Scanner(System.in);
             String syöte = lukijaPeli.nextLine();
 
@@ -176,7 +178,9 @@ public class Peli {
             else if (syöte.toLowerCase().contains("huoneen tavar")) {
                 System.out.println("Huoneessa on:\n" + pelaaja.getPelaajanSijainti().haeTavarat());
                 pelaa();
-            } else if (syöte.toLowerCase().contains("nuku")) {
+            }
+            // nuku
+            else if (syöte.toLowerCase().contains("nuku")) {
                 if (pelaaja.getPelaajanSijainti().equals(makuuhuone)) {
                     System.out.println("Zzzzz.....Zzzzz........\nOlipa makoisat nokoset! Mutta nyt on aika herätä, " + pelaaja.getNimi() +"!");
                 } else {
