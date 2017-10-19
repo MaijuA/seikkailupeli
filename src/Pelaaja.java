@@ -66,7 +66,7 @@ public class Pelaaja {
             } else {
                 if (tavara.syötävä && tavara.onkoTimanttia) {
                     timanttilaskuri++;
-                    System.out.println("Oho... mikä kolahti hampaaseen!! Sehän oli timantti!! Hiphurraa!\nTimanttisaldosi on nyt " + timanttilaskuri);
+                    System.out.println("Oho... mikä kolahti hampaaseen!! Sehän oli timantti!! Hiphurraa " + getNimi() + "!\nTimanttisaldosi on nyt " + timanttilaskuri);
                     pelaajanTavaralista.remove(tavara);
                 } else if (tavara.syötävä) {
                     System.out.println("Mmmm..." + tavara + "! Nam, olipa herkullista.\nNyt jaksan taas etsiä timantteja!");
@@ -93,7 +93,7 @@ public class Pelaaja {
             } else {
                 if (tavara.avattava && tavara.onkoTimanttia) {
                     timanttilaskuri++;
-                    System.out.println("Jipijee!! Löysit sisältä timantin!!\nTimanttisaldosi on tällä hetkellä " + timanttilaskuri);
+                    System.out.println("Jipijee, " + getNimi() + "!! Löysit sisältä timantin!!\nTimanttisaldosi on tällä hetkellä " + timanttilaskuri);
                     tavara.onkoTimanttia = false;
                 } else if (tavara.avattava) {
                     System.out.println("Avasit esineen " + tavara + ". Voi harmi, ei löytynyt mitään jännää. Jatka  siis timanttien etsimistä!");

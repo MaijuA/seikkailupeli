@@ -93,7 +93,12 @@ public class Peli {
 
         // Luodaan pelaaja
         Scanner lukija = new Scanner(System.in);
-        System.out.println("Tervetuloa seikkailutaloon!\nMikä on nimesi? ");
+        System.out.println("*********************************************************");
+        System.out.println("*                                                       *");
+        System.out.println("*              Tervetuloa seikkailutaloon!              *");
+        System.out.println("*                                                       *");
+        System.out.println("*********************************************************\n");
+        System.out.println("   ****************  Mikä on nimesi?  ****************   ");
         String nimi = lukija.nextLine();
         pelaaja = new Pelaaja(nimi, eteinen);
         System.out.println("Moi " + nimi + "!\nTavoitteesi on etsiä talosta kolme timanttia ja löytää tie ulos.\n" +
@@ -114,10 +119,10 @@ public class Peli {
     private void pelaa() {
         if (pelaaja.getTimanttilaskuri() == 3) {
             System.out.println("");
-            System.out.println("******* JEEE!! *******");
-            System.out.println("LÖYSIT KOLME TIMANTTIA");
-            System.out.println("**** PÄÄSIT LÄPI!! ***");
-            System.out.println("\n*ONNEA " + pelaaja.getNimi() + "!!*");
+            System.out.println("********* JEEE!! *********");
+            System.out.println("* LÖYSIT KOLME TIMANTTIA *");
+            System.out.println("***    PÄÄSIT LÄPI!!   ***");
+            System.out.println("\n** ONNEA " + pelaaja.getNimi() + "!! **");
         } else {
 
             Scanner lukijaPeli = new Scanner(System.in);
@@ -131,7 +136,7 @@ public class Peli {
 
             // lopeta peli
             else if (syöte.toLowerCase().contains("lopeta")) {
-                System.out.println("Lopetit pelin.");
+                System.out.println("Lopetit pelin " + pelaaja.getNimi());
             }
 
             // ota tavara huoneesta pelaajalle
@@ -173,7 +178,7 @@ public class Peli {
                 pelaa();
             } else if (syöte.toLowerCase().contains("nuku")) {
                 if (pelaaja.getPelaajanSijainti().equals(makuuhuone)) {
-                    System.out.println("Zzzzz.....Zzzzz........\nOlipa makoisat nokoset!");
+                    System.out.println("Zzzzz.....Zzzzz........\nOlipa makoisat nokoset! Mutta nyt on aika herätä, " + pelaaja.getNimi() +"!");
                 } else {
                     System.out.println("Ei lattialla viitti..");
                 }
