@@ -120,9 +120,9 @@ public class Peli {
             System.out.println("**** PÄÄSIT LÄPI!! ***");
             System.out.println("\n*ONNEA " + pelaaja.getNimi()+ "!!*");
         }
+
         Scanner lukijaPeli = new Scanner(System.in);
         String syöte = lukijaPeli.nextLine();
-
 
         // katso komennot
         if (syöte.toLowerCase().contains("komennot")) {
