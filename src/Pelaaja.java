@@ -52,90 +52,98 @@ public class Pelaaja {
     }
 
     public void syö(String syöte) {
-        if (!(pelaajanTavaralista.isEmpty())) {
-            int eiole = 0;
-            for (Iterator<Tavara> it = pelaajanTavaralista.iterator(); it.hasNext(); ) {
-                Tavara t = it.next();
+        Tavara tavara = null;
+        if (pelaajanTavaralista.isEmpty()) {
+            System.out.println("Sinulla ei ole mitään syötävää!");
+        } else {
+            for (Tavara t : pelaajanTavaralista) {
                 if (syöte.toLowerCase().contains(t.getTavaranNimi())) {
-                    if (eiole == pelaajanTavaralista.size()){
-                        System.out.println("Sinulla ei ole tällaista syötävää.");
-                    } else if (t.syötävä && t.onkoTimanttia) {
-                        timanttilaskuri++;
-                        System.out.println("Oho... mikä kolahti hampaaseen!! Sehän oli timantti!! Hiphurraa!\nTimanttisaldosi on nyt " + timanttilaskuri);
-                        it.remove();
-                    } else if (!t.syötävä) {
-                        System.out.println("Pyh, se mitä yritit syödä oli " + t + "! Hmm, ehkä tarvitset sitä johonkin muuhun.");
-                    } else if (t.syötävä) {
-                        System.out.println("Mmmm..." + t + "! Nam, olipa herkullista.\nNyt jaksan taas etsiä timantteja!");
-                        it.remove();
-                    } else {
-                        System.out.println("Oi voi... Sinulla ei ole mitään syötävää.");
-                    }
-                } else {
-                    eiole++;
-
+                    tavara = t;
                 }
             }
-        } else System.out.println("Sinulla ei ole tavaroita.");
+            if (tavara == null) {
+                System.out.println("Sinulla ei ole tällaista syötävää");
+            } else {
+                if (tavara.syötävä && tavara.onkoTimanttia) {
+                    timanttilaskuri++;
+                    System.out.println("Oho... mikä kolahti hampaaseen!! Sehän oli timantti!! Hiphurraa!\nTimanttisaldosi on nyt " + timanttilaskuri);
+                    pelaajanTavaralista.remove(tavara);
+                } else if (tavara.syötävä) {
+                    System.out.println("Mmmm..." + tavara + "! Nam, olipa herkullista.\nNyt jaksan taas etsiä timantteja!");
+                    pelaajanTavaralista.remove(tavara);
+                } else {
+                    System.out.println("Pyh, se mitä yritit syödä oli " + tavara + "! Hmm, ehkä tarvitset sitä johonkin muuhun.");
+                }
+            }
+        }
     }
 
     public void avaa(String syöte) {
+        Tavara tavara = null;
         if (pelaajanTavaralista.isEmpty()) {
-            System.out.println("Hups! Sinulla ei olekaan tällaista avattavaa!");
-        }
-        for (Iterator<Tavara> it = pelaajanTavaralista.iterator(); it.hasNext(); ) {
-            Tavara t = it.next();
-            int eiole = 0;
-            if (syöte.toLowerCase().contains(t.getTavaranNimi())) {
-                if (t.avattava && t.onkoTimanttia) {
+            System.out.println("Sinulla ei ole mitään avattavaa!");
+        } else {
+            for (Tavara t : pelaajanTavaralista) {
+                if (syöte.toLowerCase().contains(t.getTavaranNimi())) {
+                    tavara = t;
+                }
+            }
+            if (tavara == null) {
+                System.out.println("Sinulla ei ole tällaista avattavaa");
+            } else {
+                if (tavara.avattava && tavara.onkoTimanttia) {
                     timanttilaskuri++;
                     System.out.println("Jipijee!! Löysit sisältä timantin!!\nTimanttisaldosi on tällä hetkellä " + timanttilaskuri);
-                    it.remove();
-                } else if (t.avattava) {
-                    System.out.println("Avasit esineen " + t + ". Voi harmi, ei löytynyt mitään jännää. Jatka  siis timanttien etsimistä!");
+                    tavara.onkoTimanttia = false;
+                } else if (tavara.avattava) {
+                    System.out.println("Avasit esineen " + tavara + ". Voi harmi, ei löytynyt mitään jännää. Jatka  siis timanttien etsimistä!");
                 } else {
                     System.out.println("Harminpaikka! Tätä esinettä ei ole mahdollista avata.");
                 }
-            } else {
-                eiole++;
-                if (eiole == pelaajanTavaralista.size()){
-                    System.out.println("Sinulla ei ole tavaraa jonka haluat avata.");
-                };
             }
         }
     }
 
     public void otaTavara(String syöte) {
+        Tavara tavara = null;
         if (pelaajanSijainti.tavaralista.isEmpty()) {
             System.out.println("Oho! Tässä huoneessa ei olekaan enää tavaroita!");
-        }
-        for (Iterator<Tavara> it = pelaajanSijainti.tavaralista.iterator(); it.hasNext(); ) {
-            Tavara t = it.next();
-            if (syöte.toLowerCase().contains(t.getTavaranNimi()) && t.poistaTimantti && timanttilaskuri > 0) {
-                pelaajanTavaralista.add(t);
-                System.out.println(t.ominaisuudet);
-                it.remove();
-                System.out.println("Mutta voi voi, " + t + " teki taskuun reiän ja yksi timantti katosi!!");
-                timanttilaskuri--;
-                System.out.println("Timanttisaldosi on nyt " + timanttilaskuri);
-            } else if (syöte.toLowerCase().contains(t.getTavaranNimi())) {
-                pelaajanTavaralista.add(t);
-                System.out.println(t.ominaisuudet);
-                it.remove();
+        } else {
+            for (Tavara t : pelaajanSijainti.tavaralista) {
+                if (syöte.toLowerCase().contains(t.getTavaranNimi())) {
+                    tavara = t;
+                }
+            }
+            if (tavara != null) {
+                if (tavara.poistaTimantti && timanttilaskuri > 0) {
+                    pelaajanTavaralista.add(tavara);
+                    System.out.println(tavara.ominaisuudet);
+                    pelaajanSijainti.tavaralista.remove(tavara);
+                    System.out.println("Mutta voi voi, " + tavara + " teki taskuun reiän ja yksi timantti katosi!!");
+                    timanttilaskuri--;
+                    System.out.println("Timanttisaldosi on nyt " + timanttilaskuri);
+                } else {
+                    pelaajanTavaralista.add(tavara);
+                    System.out.println(tavara.ominaisuudet);
+                    pelaajanSijainti.tavaralista.remove(tavara);
+                }
+            } else {
+                System.out.println("Hups! Ei olekaan tällaista tavaraa huoneessa!");
             }
         }
     }
 
     public void tutki(String syöte) {
         int eiole = 0;
-        for (int i = 0; i < pelaajanTavaralista.size(); i ++) {
+        for (int i = 0; i < pelaajanTavaralista.size(); i++) {
             Tavara t = pelaajanTavaralista.get(i);
             if (syöte.toLowerCase().contains(t.getTavaranNimi())) {
                 System.out.println(t.ominaisuudet);
             } else {
                 eiole++;
             }
-        } if (eiole == pelaajanTavaralista.size()){
+        }
+        if (eiole == pelaajanTavaralista.size()) {
             System.out.println("Sinulla ei ole tavaraa mitä haluat tutkia.");
         }
     }
@@ -144,7 +152,7 @@ public class Pelaaja {
     public void pyydäKomennot() {
         System.out.println("Navigointi:\n\t- eteen\n\t- taakse\n\t- oikea\n\t- vasen\nMuut toiminnot:" +
                 "\n\t- ota 'tavara'\n\t- tutki 'tavara'\n\t- syö 'tavara'\n\t- avaa 'tavara'\n\t- kartta\n\t" +
-                "- huoneen tavarat\n\t- omat tavarat\n\t \n\t nuku");
+                "- huoneen tavarat\n\t- omat tavarat\n\t- nuku\n\t- lopeta");
     }
 
     public int getTimanttilaskuri() {

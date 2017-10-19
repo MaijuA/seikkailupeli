@@ -105,5 +105,15 @@ public class PelaajaTest {
         assertEquals("Timanttien määrä", 1, timantit);
     }
 
-
+    @Test
+    public void testaaAvaa() throws Exception {
+        int pelaajanTavaranlistanKoko = pelaaja.getPelaajanTavaralista().size();
+        tavara = new Tavara("soittorasia", "Söpö soittorasia", "eteinen", false, true, true, false);
+        eteinen.tavaralista.add(tavara);
+        pelaaja.otaTavara("soittorasia");
+        pelaaja.avaa("soittorasia");
+        int timantit = pelaaja.getTimanttilaskuri();
+        assertEquals("Pelaajan tavaramäärä", 0, pelaajanTavaranlistanKoko);
+        assertEquals("Timanttien määrä", 1, timantit);
+    }
 }
